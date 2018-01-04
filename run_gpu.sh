@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 USER_UID=$(id -u)
 USER_GID=$(id -g)
@@ -32,9 +32,10 @@ nvidia-docker run \
 	-it \
 	--name finalgg \
 	--rm \
-    $DOCKER_VISUAL_NVIDIA \
-    --privileged \
-	--env="DISPLAY" my_ubuntu/sensing-int-sys
+    	$DOCKER_VISUAL_NVIDIA \
+    	--privileged \
+	--env="DISPLAY" \
+	my_ubuntu/sensing-int-sys
 	#--volume=/home/:/home/:rw \
 	#--env="USER_UID=${USER_UID}" \
 	#--env="USER_GID=${USER_GID}" \
