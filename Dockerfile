@@ -29,7 +29,21 @@ RUN export uid=1001 gid=1001 && \
     chown ${uid}:${gid} -R /home/huchanwei123
     
 # Install dependencies
-RUN apt-get install -y vnc4server vim git cmake3 firefox wget mesa-utils
+RUN apt-get install -y vnc4server \
+                       vim \
+                       git \ 
+                       cmake3 \
+                       firefox \
+                       wget \
+                       mesa-utils \
+                       locate \ 
+                       eog
+# Install GLFW3
+RUN git clone https://github.com/glfw/glfw.git && \
+    cd glfw && mkdir glfw-build && cd glfw-build && \
+    cmake -DBUILD_SHARED_LIBS=ON ../. && \
+    make -j8 && \
+    sudo make install 
 
 USER huchanwei123
 ENV HOME /home/huchanwei123

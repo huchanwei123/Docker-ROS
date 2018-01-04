@@ -30,11 +30,12 @@ DOCKER_VISUAL_NVIDIA="-e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix --device /d
 
 nvidia-docker run \
 	-it \
-	--rm \
+	-d \
 	$DOCKER_VISUAL_NVIDIA \
     --privileged \
-	--env="DISPLAY" my_ubuntu
+	--env="DISPLAY" my_ubuntu/sensing-int-sys
 	#--volume=/home/:/home/:rw \
 	#--env="USER_UID=${USER_UID}" \
 	#--env="USER_GID=${USER_GID}" \
+
 xhost -local:root
