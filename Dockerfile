@@ -1,4 +1,3 @@
-#FROM ubuntu:14.04
 FROM nvidia/cuda:7.5-devel-ubuntu14.04
 LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
 
@@ -50,5 +49,4 @@ ENV HOME /home/huchanwei123
 
 WORKDIR /home/huchanwei123
 
-#CMD /usr/bin/firefox
 CMD ["bash"]
