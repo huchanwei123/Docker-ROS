@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 USER_UID=$(id -u)
 USER_GID=$(id -g)
@@ -29,13 +29,14 @@ DOCKER_VISUAL_NVIDIA="-e DISPLAY=:0 -v /tmp/.X11-unix:/tmp/.X11-unix -v /tmp/.ga
 # docker run --rm $DOCKER_VISUAL_NVIDIA -e QT_X11_NO_MITSHM=1 -v $HOME/.ros:$HOME/.ros:rw -v $HOME/.gazebo:$HOME/.gazebo:rw osrf/ros:kinetic-desktop-full roslaunch gazebo_ros empty_world.launch
 
 nvidia-docker run \
-	-it \
+    -it \
+    -p 5984:5984 \
 	--name finalgg \
 	--rm \
-    	$DOCKER_VISUAL_NVIDIA \
-    	--privileged \
+    $DOCKER_VISUAL_NVIDIA \
+    --privileged \
 	--env="DISPLAY" \
-	my_ubuntu/sensing-int-sys
+    my_ubuntu/sensing-int-sys
 	#--volume=/home/:/home/:rw \
 	#--env="USER_UID=${USER_UID}" \
 	#--env="USER_GID=${USER_GID}" \
